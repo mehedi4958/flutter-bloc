@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_block/app_block.dart';
+import 'package:flutter_block/app_event.dart';
+import 'package:flutter_block/app_state.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,13 +14,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return BlocProvider(
+      create: (context) => AppBlocs(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -58,26 +66,34 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            BlocBuilder<AppBlocs, AppState>(builder: (context, state) {
+              return Text(
+                '${BlocProvider.of<AppBlocs>(context).state.counter}',
+                style: Theme.of(context).textTheme.headlineMedium,
+              );
+            }),
           ],
         ),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          FloatingActionButton(
-            onPressed: _decrementCounter,
-            tooltip: 'Decrement',
-            child: const Icon(Icons.remove),
-          ),
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
+          BlocBuilder<AppBlocs, AppState>(builder: (context, state) {
+            return FloatingActionButton(
+              onPressed: () =>
+                  BlocProvider.of<AppBlocs>(context).add(Decrement()),
+              tooltip: 'Decrement',
+              child: const Icon(Icons.remove),
+            );
+          }),
+          BlocBuilder<AppBlocs, AppState>(builder: (context, state) {
+            return FloatingActionButton(
+              onPressed: () =>
+                  BlocProvider.of<AppBlocs>(context).add(Increment()),
+              tooltip: 'Increment',
+              child: const Icon(Icons.add),
+            );
+          }),
         ],
       ),
     );
