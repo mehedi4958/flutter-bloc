@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_block/generated/assets.dart';
 import 'package:flutter_block/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:flutter_block/pages/welcome/bloc/welcome_events.dart';
 import 'package:flutter_block/pages/welcome/bloc/welcome_states.dart';
@@ -14,6 +15,14 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
+  PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,6 +37,7 @@ class _WelcomeState extends State<Welcome> {
                 alignment: Alignment.topCenter,
                 children: [
                   PageView(
+                    controller: _pageController,
                     onPageChanged: (index) {
                       state.page = index;
                       BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
@@ -39,7 +49,7 @@ class _WelcomeState extends State<Welcome> {
                         'Next',
                         'First See Learning',
                         'Forget about a paper. All knowledge in one learning!',
-                        'image path',
+                        Assets.imagesReading,
                       ),
                       _page(
                         context,
@@ -47,7 +57,7 @@ class _WelcomeState extends State<Welcome> {
                         'Next',
                         'Connect with Everyone',
                         'Always keep in touch with your tutor & friends. Let\'s get connected!',
-                        'image path',
+                        Assets.imagesBoy,
                       ),
                       _page(
                         context,
@@ -55,7 +65,7 @@ class _WelcomeState extends State<Welcome> {
                         'Get Started',
                         'Always Fascinated Learning',
                         'Anywhere, anytime. The time is at your discretion. So, study whenever you want.',
-                        'image path',
+                        Assets.imagesMan,
                       ),
                     ],
                   ),
@@ -91,7 +101,10 @@ class _WelcomeState extends State<Welcome> {
         SizedBox(
           width: 345.w,
           height: 345.w,
-          child: Text(imagePath),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
+          ),
         ),
         SizedBox(
           child: Text(
@@ -114,32 +127,49 @@ class _WelcomeState extends State<Welcome> {
                 fontSize: 14.sp,
                 fontWeight: FontWeight.normal,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(top: 100.h, left: 25.w, right: 25.w),
-          width: 325.w,
-          height: 50.h,
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.circular(15.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withValues(alpha: 0.1),
-                blurRadius: 1.w,
-                spreadRadius: 2.w,
-                offset: const Offset(0, 1),
-              ),
-            ],
-          ),
-          child: Center(
-            child: Text(
-              buttonName,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.bold,
+        GestureDetector(
+          onTap: () {
+            if (index < 3) {
+              _pageController.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.decelerate,
+              );
+            } else {
+              // Navigator.of(context)
+              //     .push(MaterialPageRoute(builder: (context) => MyHomePage()));
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('myHomePage', (route) => false);
+            }
+          },
+          child: Container(
+            margin: EdgeInsets.only(top: 100.h, left: 25.w, right: 25.w),
+            width: 325.w,
+            height: 50.h,
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(15.r),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withValues(alpha: 0.1),
+                  blurRadius: 1.w,
+                  spreadRadius: 2.w,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+            ),
+            child: Center(
+              child: Text(
+                buttonName,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

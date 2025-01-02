@@ -17,12 +17,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => WelcomeBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => WelcomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AppBlocs(),
+        ),
+      ],
       child: ScreenUtilInit(
-        builder: (_, child) => const MaterialApp(
+        builder: (_, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
+          routes: {
+            'myHomePage': (context) => const MyHomePage(),
+          },
           home: Welcome(),
         ),
       ),
@@ -61,6 +71,7 @@ class MyHomePage extends StatelessWidget {
         children: [
           BlocBuilder<AppBlocs, AppState>(builder: (context, state) {
             return FloatingActionButton(
+              heroTag: 'decrement button',
               onPressed: () =>
                   BlocProvider.of<AppBlocs>(context).add(Decrement()),
               tooltip: 'Decrement',
@@ -69,6 +80,7 @@ class MyHomePage extends StatelessWidget {
           }),
           BlocBuilder<AppBlocs, AppState>(builder: (context, state) {
             return FloatingActionButton(
+              heroTag: 'increment button',
               onPressed: () =>
                   BlocProvider.of<AppBlocs>(context).add(Increment()),
               tooltip: 'Increment',
