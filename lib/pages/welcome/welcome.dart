@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,6 +19,7 @@ class _WelcomeState extends State<Welcome> {
           margin: EdgeInsets.only(top: 34.h),
           width: 375.w,
           child: Stack(
+            alignment: Alignment.topCenter,
             children: [
               PageView(
                 children: [
@@ -27,25 +29,40 @@ class _WelcomeState extends State<Welcome> {
                     'Next',
                     'First See Learning',
                     'Forget about a paper. All knowledge in one learning!',
-                    '',
+                    'image path',
                   ),
                   _page(
                     context,
-                    1,
+                    2,
                     'Next',
-                    'First See Learning',
-                    'Forget about a paper. All knowledge in one learning!',
-                    '',
+                    'Connect with Everyone',
+                    'Always keep in touch with your tutor & friends. Let\'s get connected!',
+                    'image path',
                   ),
                   _page(
                     context,
-                    1,
-                    'Next',
-                    'First See Learning',
-                    'Forget about a paper. All knowledge in one learning!',
-                    '',
+                    3,
+                    'Get Started',
+                    'Always Fascinated Learning',
+                    'Anywhere, anytime. The time is at your discretion. So, study whenever you want.',
+                    'image path',
                   ),
                 ],
+              ),
+              Positioned(
+                bottom: 100.h,
+                child: DotsIndicator(
+                  dotsCount: 3,
+                  decorator: DotsDecorator(
+                    color: Colors.grey,
+                    activeColor: Colors.blue,
+                    size: Size.square(8.w),
+                    activeSize: Size(10.w, 8.w),
+                    activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.r),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
