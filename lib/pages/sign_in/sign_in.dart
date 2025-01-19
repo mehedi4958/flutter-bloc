@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_block/generated/assets.dart';
-import 'package:flutter_block/pages/sign_in/widgets/sign_in_widget.dart';
+import 'package:flutter_block/pages/sign_in/widgets/sign_in_widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
@@ -49,6 +49,9 @@ class _SignInState extends State<SignIn> {
                         Assets.iconsLock,
                         obscured: true,
                       ),
+                      forgotPassword(),
+                      buildLoginAndRegistrationButton('Log in', 0),
+                      buildLoginAndRegistrationButton('Register', 1),
                     ],
                   ),
                 ),

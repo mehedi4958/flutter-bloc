@@ -132,3 +132,57 @@ Widget buildTextField(String hintText, TextInputType textType, String iconName,
     ),
   );
 }
+
+/// forgot password
+Widget forgotPassword() {
+  return Container(
+    width: 260.w,
+    height: 44.h,
+    child: GestureDetector(
+      onTap: () {},
+      child: Text(
+        'Forgot Password?',
+        style: TextStyle(
+          color: Colors.black,
+          decoration: TextDecoration.underline,
+          decorationColor: Colors.black,
+          fontSize: 12.sp,
+        ),
+      ),
+    ),
+  );
+}
+
+/// login and registration button
+Widget buildLoginAndRegistrationButton(String buttonText, int buttonType) {
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      width: 350.w,
+      height: 50.h,
+      margin: EdgeInsets.only(top: buttonType == 0 ? 40.h : 20.h),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(15.r),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: 1.w,
+            blurRadius: 1.w,
+            offset: Offset(0, 1),
+            color: Colors.grey.withValues(alpha: 0.1),
+          ),
+        ],
+      ),
+      child: Center(
+        child: Text(
+          buttonText,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ),
+  );
+}
