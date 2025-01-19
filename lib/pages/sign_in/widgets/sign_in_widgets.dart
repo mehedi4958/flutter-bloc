@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_block/common/values/colors.dart';
 import 'package:flutter_block/generated/assets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 AppBar buildAppBar() {
   return AppBar(
-    // backgroundColor: Colors.white,
+    //surfaceTintColor: Colors.white,
     bottom: PreferredSize(
       preferredSize: const Size.fromHeight(1.0),
       child: Container(
-        color: Colors.grey.withValues(alpha: 0.5),
+        color: AppColors.primarySecondaryBackground,
         // height defines the thickness of the line
         height: 1.0,
       ),
@@ -16,7 +17,7 @@ AppBar buildAppBar() {
     title: Text(
       'Log In',
       style: TextStyle(
-        color: Colors.black,
+        color: AppColors.primaryText,
         fontSize: 16.sp,
         fontWeight: FontWeight.normal,
       ),
@@ -28,6 +29,7 @@ AppBar buildAppBar() {
 Widget buildThirdPartyLogin(BuildContext context) {
   return Container(
     margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
+    padding: EdgeInsets.only(left: 25.w, right: 25.w),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -76,7 +78,7 @@ Widget buildTextField(String hintText, TextInputType textType, String iconName,
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(15.r),
-      border: Border.all(color: Colors.black),
+      border: Border.all(color: AppColors.primaryFourElementText),
     ),
     child: Row(
       children: [
@@ -95,7 +97,7 @@ Widget buildTextField(String hintText, TextInputType textType, String iconName,
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: TextStyle(
-                color: Colors.grey.withValues(alpha: 0.5),
+                color: AppColors.primarySecondaryElementText,
               ),
               border: OutlineInputBorder(
                 borderSide: BorderSide(
@@ -119,7 +121,7 @@ Widget buildTextField(String hintText, TextInputType textType, String iconName,
               ),
             ),
             style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontFamily: 'Avenir',
               fontWeight: FontWeight.normal,
               fontSize: 14.sp,
@@ -135,7 +137,7 @@ Widget buildTextField(String hintText, TextInputType textType, String iconName,
 
 /// forgot password
 Widget forgotPassword() {
-  return Container(
+  return SizedBox(
     width: 260.w,
     height: 44.h,
     child: GestureDetector(
@@ -143,9 +145,9 @@ Widget forgotPassword() {
       child: Text(
         'Forgot Password?',
         style: TextStyle(
-          color: Colors.black,
+          color: AppColors.primaryText,
           decoration: TextDecoration.underline,
-          decorationColor: Colors.black,
+          decorationColor: AppColors.primaryText,
           fontSize: 12.sp,
         ),
       ),
@@ -162,8 +164,15 @@ Widget buildLoginAndRegistrationButton(String buttonText, int buttonType) {
       height: 50.h,
       margin: EdgeInsets.only(top: buttonType == 0 ? 40.h : 20.h),
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: buttonType == 0
+            ? AppColors.primaryElement
+            : AppColors.primaryBackground,
         borderRadius: BorderRadius.circular(15.r),
+        border: Border.all(
+          color: buttonType == 0
+              ? Colors.transparent
+              : AppColors.primaryFourElementText,
+        ),
         boxShadow: [
           BoxShadow(
             spreadRadius: 1.w,
@@ -177,7 +186,9 @@ Widget buildLoginAndRegistrationButton(String buttonText, int buttonType) {
         child: Text(
           buttonText,
           style: TextStyle(
-            color: Colors.white,
+            color: buttonType == 0
+                ? AppColors.primaryBackground
+                : AppColors.primaryText,
             fontSize: 16.sp,
             fontWeight: FontWeight.bold,
           ),

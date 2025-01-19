@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_block/common/values/colors.dart';
 import 'package:flutter_block/generated/assets.dart';
 import 'package:flutter_block/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:flutter_block/pages/welcome/bloc/welcome_events.dart';
@@ -75,8 +76,8 @@ class _WelcomeState extends State<Welcome> {
                       position: state.page,
                       dotsCount: 3,
                       decorator: DotsDecorator(
-                        color: Colors.grey,
-                        activeColor: Colors.blue,
+                        color: AppColors.primaryThreeElementText,
+                        activeColor: AppColors.primaryElement,
                         size: Size.square(8.w),
                         activeSize: Size(18.w, 8.w),
                         activeShape: RoundedRectangleBorder(
@@ -110,7 +111,7 @@ class _WelcomeState extends State<Welcome> {
           child: Text(
             title,
             style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontSize: 24.sp,
               fontWeight: FontWeight.normal,
             ),
@@ -123,7 +124,7 @@ class _WelcomeState extends State<Welcome> {
             child: Text(
               subtitle,
               style: TextStyle(
-                color: Colors.black.withValues(alpha: 0.5),
+                color: AppColors.primarySecondaryElementText,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.normal,
               ),
@@ -151,7 +152,7 @@ class _WelcomeState extends State<Welcome> {
             width: 325.w,
             height: 50.h,
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: AppColors.primaryElement,
               borderRadius: BorderRadius.circular(15.r),
               boxShadow: [
                 BoxShadow(
