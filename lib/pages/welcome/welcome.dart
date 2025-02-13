@@ -73,7 +73,7 @@ class _WelcomeState extends State<Welcome> {
                   Positioned(
                     bottom: 100.h,
                     child: DotsIndicator(
-                      position: state.page,
+                      position: state.page.toDouble(),
                       dotsCount: 3,
                       decorator: DotsDecorator(
                         color: AppColors.primaryThreeElementText,
