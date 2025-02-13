@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_block/common/widgets/flutter_toast.dart';
 import 'package:flutter_block/pages/sign_in/bloc/sign_in_blocs.dart';
 
 class SignInController {
@@ -14,13 +15,13 @@ class SignInController {
         String emailAddress = state.email;
         String password = state.password;
         if (emailAddress.isEmpty) {
-          print('Email is empty');
-        } else {
-          print('Email is $emailAddress');
+          toastInfo(message: 'Email is Empty');
+          return;
         }
 
         if (password.isEmpty) {
-          print('Password is empty');
+          toastInfo(message: 'Password is Empty');
+          return;
         }
 
         try {
@@ -28,24 +29,28 @@ class SignInController {
               .signInWithEmailAndPassword(
                   email: emailAddress, password: password);
           if (credential.user == null) {
-            print('User does not exists');
+            toastInfo(message: 'User does not exist');
+            return;
           }
           if (!credential.user!.emailVerified) {
-            print('Email is not verified');
+            toastInfo(message: 'Email is not verified');
+            return;
           }
           var user = credential.user;
           if (user != null) {
+            // Todo: Implement other things
             print('User exists');
           } else {
-            print('User does not exist');
+            toastInfo(message: 'User does not exist');
+            return;
           }
         } on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {
-            print('No user found for that email.');
+            toastInfo(message: 'No user found for that email.');
           } else if (e.code == 'wrong-password') {
-            print('Wrong password provided for that user.');
+            toastInfo(message: 'Wrong password provided for that user.');
           } else if (e.code == 'invalid-email') {
-            print('Invalid email');
+            toastInfo(message: 'Invalid email');
           }
         }
       }
