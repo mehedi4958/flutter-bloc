@@ -14,10 +14,13 @@ class SignInController {
         String emailAddress = state.email;
         String password = state.password;
         if (emailAddress.isEmpty) {
-          //
+          print('Email is empty');
+        } else {
+          print('Email is $emailAddress');
         }
+
         if (password.isEmpty) {
-          //
+          print('Password is empty');
         }
 
         try {
@@ -25,19 +28,23 @@ class SignInController {
               .signInWithEmailAndPassword(
                   email: emailAddress, password: password);
           if (credential.user == null) {
-            //
+            print('User does not exists');
           }
           if (!credential.user!.emailVerified) {
-            //
+            print('Email is not verified');
           }
           var user = credential.user;
           if (user != null) {
-            // we got verified user the from firebase
+            print('User exists');
           } else {
-            // we got error getting the user from firebase
+            print('User does not exist');
           }
-        } catch (e) {
-          //
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'user-not-found') {
+            print('No user found for that email.');
+          } else if (e.code == 'wrong-password') {
+            print('Wrong password provided for that user.');
+          }
         }
       }
     } catch (e) {
