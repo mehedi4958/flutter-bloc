@@ -49,7 +49,20 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions();
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAT6nuOWitCpk9Tr3Si8dJ7r20RiLNxsA8',
+    appId: '1:576668402467:android:f7cff7705aad19d4e00296',
+    messagingSenderId: '576668402467',
+    projectId: 'flutter-bloc-15628',
+    storageBucket: 'flutter-bloc-15628.firebasestorage.app',
+  );
 
-  static const FirebaseOptions ios = FirebaseOptions();
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyClLqjkioI6CwiP1AKzir-RDeKZBJO7XvQ',
+    appId: '1:576668402467:ios:286c9382db1b7973e00296',
+    messagingSenderId: '576668402467',
+    projectId: 'flutter-bloc-15628',
+    storageBucket: 'flutter-bloc-15628.firebasestorage.app',
+    iosBundleId: 'com.example.flutterBlocUlearn',
+  );
 }
