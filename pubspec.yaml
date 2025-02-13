@@ -51,6 +51,8 @@ dependencies:
 
   firebase_auth: ^5.4.2
 
+  fluttertoast: ^8.2.12
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

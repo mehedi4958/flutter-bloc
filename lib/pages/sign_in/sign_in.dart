@@ -4,6 +4,7 @@ import 'package:flutter_block/generated/assets.dart';
 import 'package:flutter_block/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:flutter_block/pages/sign_in/bloc/sign_in_events.dart';
 import 'package:flutter_block/pages/sign_in/bloc/sign_in_states.dart';
+import 'package:flutter_block/pages/sign_in/sign_in_controller.dart';
 import 'package:flutter_block/pages/sign_in/widgets/sign_in_widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -63,8 +64,14 @@ class _SignInState extends State<SignIn> {
                           obscured: true,
                         ),
                         forgotPassword(),
-                        buildLoginAndRegistrationButton('Log in', 0),
-                        buildLoginAndRegistrationButton('Register', 1),
+                        buildLoginAndRegistrationButton('Log in', 0, () {
+                          print('Login Button Clicked');
+                          SignInController(context: context)
+                              .handleSignIn('email');
+                        }),
+                        buildLoginAndRegistrationButton('Register', 1, () {
+                          print('Register Button Clicked');
+                        }),
                       ],
                     ),
                   ),
