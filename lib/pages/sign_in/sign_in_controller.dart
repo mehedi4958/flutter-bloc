@@ -10,7 +10,7 @@ class SignInController {
   void handleSignIn(String type) async {
     try {
       if (type == 'email') {
-        final state = context.read<SignInBloc>().state;
+        final state = context.read<SignInBlocs>().state;
         String emailAddress = state.email;
         String password = state.password;
         if (emailAddress.isEmpty) {

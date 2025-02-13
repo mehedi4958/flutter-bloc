@@ -70,6 +70,7 @@ Widget reusableText(String text) {
 
 /// text field
 Widget buildTextField(String hintText, TextInputType textType, String iconName,
+    void Function(String value)? func,
     {bool? obscured}) {
   return Container(
     width: 325.w,
@@ -93,6 +94,7 @@ Widget buildTextField(String hintText, TextInputType textType, String iconName,
           height: 50.h,
           width: 270.w,
           child: TextField(
+            onChanged: (value) => func!(value),
             keyboardType: textType,
             decoration: InputDecoration(
               hintText: hintText,
