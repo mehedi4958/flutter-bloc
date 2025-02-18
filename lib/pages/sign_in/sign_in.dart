@@ -5,9 +5,8 @@ import 'package:flutter_block/pages/sign_in/bloc/sign_in_blocs.dart';
 import 'package:flutter_block/pages/sign_in/bloc/sign_in_events.dart';
 import 'package:flutter_block/pages/sign_in/bloc/sign_in_states.dart';
 import 'package:flutter_block/pages/sign_in/sign_in_controller.dart';
-import 'package:flutter_block/pages/sign_in/widgets/sign_in_widgets.dart';
+import 'package:flutter_block/pages/welcome/common_widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -25,7 +24,7 @@ class _SignInState extends State<SignIn> {
         child: SafeArea(
           child: Scaffold(
             backgroundColor: Colors.white,
-            appBar: buildAppBar(),
+            appBar: buildAppBar('Sign In'),
             body: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +40,6 @@ class _SignInState extends State<SignIn> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         reusableText('Email'),
-                        Gap(5.h),
                         buildTextField(
                           'Enter your email address',
                           TextInputType.emailAddress,
@@ -51,7 +49,6 @@ class _SignInState extends State<SignIn> {
                           },
                         ),
                         reusableText('Password'),
-                        Gap(5.h),
                         buildTextField(
                           'Enter your password',
                           TextInputType.text,
@@ -65,12 +62,11 @@ class _SignInState extends State<SignIn> {
                         ),
                         forgotPassword(),
                         buildLoginAndRegistrationButton('Log in', 0, () {
-                          print('Login Button Clicked');
                           SignInController(context: context)
                               .handleSignIn('email');
                         }),
                         buildLoginAndRegistrationButton('Register', 1, () {
-                          print('Register Button Clicked');
+                          Navigator.of(context).pushNamed('register');
                         }),
                       ],
                     ),

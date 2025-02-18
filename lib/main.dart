@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_block/app_block.dart';
 import 'package:flutter_block/app_event.dart';
 import 'package:flutter_block/app_state.dart';
-import 'package:flutter_block/pages/sign_in/bloc/sign_in_blocs.dart';
+import 'package:flutter_block/common/values/colors.dart';
+import 'package:flutter_block/pages/bloc_provider.dart';
+import 'package:flutter_block/pages/register/register.dart';
 import 'package:flutter_block/pages/sign_in/sign_in.dart';
-import 'package:flutter_block/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:flutter_block/pages/welcome/welcome.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,24 +28,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          lazy: false,
-          create: (context) => WelcomeBloc(),
-        ),
-        BlocProvider(
-          lazy: false,
-          create: (context) => AppBlocs(),
-        ),
-        BlocProvider(
-          create: (create) => SignInBlocs(),
-        ),
-      ],
+      providers: AppBlocProvider.allBlocProviders,
       child: ScreenUtilInit(
         builder: (_, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            appBarTheme: const AppBarTheme(
+            appBarTheme: AppBarTheme(
+              iconTheme: IconThemeData(
+                color: AppColors.primaryText,
+              ),
               elevation: 0,
               color: Colors.white,
             ),
@@ -53,6 +45,7 @@ class MyApp extends StatelessWidget {
           routes: {
             'myHomePage': (context) => const MyHomePage(),
             'signIn': (context) => const SignIn(),
+            'register': (context) => const Register(),
           },
           home: Welcome(),
         ),
