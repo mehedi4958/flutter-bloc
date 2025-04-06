@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_block/generated/assets.dart';
 import 'package:flutter_block/pages/welcome/common_widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -23,6 +24,7 @@ class _RegisterState extends State<Register> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Gap(20.h),
                 Center(
                   child:
                       reusableText('Enter your details for free registration'),
