@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutter-bloc-15628.firebasestorage.app',
     iosBundleId: 'com.example.flutterBlocUlearn',
   );
+
 }
