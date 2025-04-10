@@ -4,6 +4,7 @@ import 'package:flutter_block/generated/assets.dart';
 import 'package:flutter_block/pages/register/bloc/register_blocs.dart';
 import 'package:flutter_block/pages/register/bloc/register_events.dart';
 import 'package:flutter_block/pages/register/bloc/register_states.dart';
+import 'package:flutter_block/pages/register/register_controller.dart';
 import 'package:flutter_block/pages/welcome/common_widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -90,7 +91,8 @@ class _RegisterState extends State<Register> {
                         reusableText(
                             'By creating an account you agree to our terms & conditions.'),
                         buildLoginAndRegistrationButton('Register', 0, () {
-                          Navigator.of(context).pushNamed('register');
+                          RegisterController(context: context)
+                              .handleEmailRegistration();
                         }),
                       ],
                     ),

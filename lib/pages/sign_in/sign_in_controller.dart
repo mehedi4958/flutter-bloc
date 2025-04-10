@@ -39,7 +39,6 @@ class SignInController {
           var user = credential.user;
           if (user != null) {
             // Todo: Implement other things
-            print('User exists');
           } else {
             toastInfo(message: 'User does not exist');
             return;
