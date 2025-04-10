@@ -29,7 +29,7 @@ class _WelcomeState extends State<Welcome> {
     return Container(
       color: Colors.white,
       child: Scaffold(
-        body: BlocBuilder<WelcomeBloc, WelcomeState>(
+        body: BlocBuilder<WelcomeBlocs, WelcomeState>(
           builder: (context, state) {
             return Container(
               margin: EdgeInsets.only(top: 34.h),
@@ -41,7 +41,8 @@ class _WelcomeState extends State<Welcome> {
                     controller: _pageController,
                     onPageChanged: (index) {
                       state.page = index;
-                      BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent());
+                      BlocProvider.of<WelcomeBlocs>(context)
+                          .add(WelcomeEvent());
                     },
                     children: [
                       _page(
