@@ -1,6 +1,10 @@
 class RegisterStates {
   const RegisterStates(
-      this.userName, this.email, this.password, this.rePassword);
+    this.userName,
+    this.email,
+    this.password,
+    this.rePassword,
+  );
   final String userName;
   final String email;
   final String password;
