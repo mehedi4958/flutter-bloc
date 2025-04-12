@@ -5,10 +5,10 @@ import 'package:flutter_block/app_block.dart';
 import 'package:flutter_block/app_event.dart';
 import 'package:flutter_block/app_state.dart';
 import 'package:flutter_block/common/values/colors.dart';
+import 'package:flutter_block/pages/application/application_page.dart';
 import 'package:flutter_block/pages/bloc_provider.dart';
 import 'package:flutter_block/pages/register/register.dart';
 import 'package:flutter_block/pages/sign_in/sign_in.dart';
-import 'package:flutter_block/pages/welcome/welcome.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'firebase_options.dart';
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
             'signIn': (context) => const SignIn(),
             'register': (context) => const Register(),
           },
-          home: Welcome(),
+          home: const ApplicationPage(),
         ),
       ),
     );
