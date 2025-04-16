@@ -57,6 +57,12 @@ class AppRoutes {
       if (result.isNotEmpty) {
         bool deviceFirstOpened = Global.storageService.getDeviceOpenedFirst();
         if (result.first.route == AppRouteURLS.initial && deviceFirstOpened) {
+          bool isLoggedIn = Global.storageService.getIsLoggedIn();
+          if (isLoggedIn) {
+            return MaterialPageRoute(
+                builder: (_) => const ApplicationPage(),
+                settings: routeSettings);
+          }
           return MaterialPageRoute(
               builder: (_) => const SignIn(), settings: routeSettings);
         }
@@ -64,7 +70,6 @@ class AppRoutes {
             builder: (_) => result.first.page, settings: routeSettings);
       }
     }
-    debugPrint('INVALID ROUTE NAME: ${routeSettings.name}');
     return MaterialPageRoute(
         builder: (_) => const SignIn(), settings: routeSettings);
   }

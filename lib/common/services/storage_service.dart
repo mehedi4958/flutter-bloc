@@ -15,4 +15,14 @@ class StorageService {
   bool getDeviceOpenedFirst() {
     return _prefs.getBool(AppConstants.storeDeviceOpenedFirst) ?? false;
   }
+
+  Future<bool> setString(String key, String value) async {
+    return await _prefs.setString(key, value);
+  }
+
+  bool getIsLoggedIn() {
+    return _prefs.getString(AppConstants.storeUserTokenKey) == null
+        ? false
+        : true;
+  }
 }

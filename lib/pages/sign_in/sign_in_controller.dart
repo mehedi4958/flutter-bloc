@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_block/common/values/constants.dart';
 import 'package:flutter_block/common/widgets/flutter_toast.dart';
+import 'package:flutter_block/global.dart';
 import 'package:flutter_block/pages/sign_in/bloc/sign_in_blocs.dart';
 
 class SignInController {
@@ -38,6 +40,8 @@ class SignInController {
           }
           var user = credential.user;
           if (user != null) {
+            Global.storageService
+                .setString(AppConstants.storeUserTokenKey, '1234567890');
             Navigator.of(context)
                 .pushNamedAndRemoveUntil('/application', (route) => false);
           } else {
