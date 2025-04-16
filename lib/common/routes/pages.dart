@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_block/common/routes/names.dart';
 import 'package:flutter_block/pages/application/application_page.dart';
+import 'package:flutter_block/pages/application/bloc/application_blocs.dart';
 import 'package:flutter_block/pages/register/bloc/register_blocs.dart';
 import 'package:flutter_block/pages/register/register.dart';
 import 'package:flutter_block/pages/sign_in/bloc/sign_in_blocs.dart';
@@ -31,7 +32,7 @@ class AppRoutes {
       PageEntity(
         route: AppRouteURLS.application,
         page: const ApplicationPage(),
-        // bloc: BlocProvider(create: (_) => WelcomeBlocs()),
+        bloc: BlocProvider(create: (_) => ApplicationBlocs()),
       ),
     ];
   }

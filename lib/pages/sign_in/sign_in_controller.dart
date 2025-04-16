@@ -38,7 +38,8 @@ class SignInController {
           }
           var user = credential.user;
           if (user != null) {
-            // Todo: Implement other things
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/application', (route) => false);
           } else {
             toastInfo(message: 'User does not exist');
             return;
@@ -50,6 +51,8 @@ class SignInController {
             toastInfo(message: 'Wrong password provided for that user.');
           } else if (e.code == 'invalid-email') {
             toastInfo(message: 'Invalid email');
+          } else if (e.code == 'invalid-credential') {
+            toastInfo(message: 'Invalid email or password');
           }
         }
       }
