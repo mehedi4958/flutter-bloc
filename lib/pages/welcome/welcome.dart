@@ -2,7 +2,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_block/common/values/colors.dart';
+import 'package:flutter_block/common/values/constants.dart';
 import 'package:flutter_block/generated/assets.dart';
+import 'package:flutter_block/global.dart';
 import 'package:flutter_block/pages/welcome/bloc/welcome_blocs.dart';
 import 'package:flutter_block/pages/welcome/bloc/welcome_events.dart';
 import 'package:flutter_block/pages/welcome/bloc/welcome_states.dart';
@@ -144,6 +146,8 @@ class _WelcomeState extends State<Welcome> {
             } else {
               // Navigator.of(context)
               //     .push(MaterialPageRoute(builder: (context) => MyHomePage()));
+              Global.storageService
+                  .setBool(AppConstants.storeDeviceOpenedFirst, true);
               Navigator.of(context)
                   .pushNamedAndRemoveUntil('/sign-in', (route) => false);
             }

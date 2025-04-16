@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_block/common/values/colors.dart';
-import 'package:flutter_block/generated/assets.dart';
 import 'package:flutter_block/pages/application/bloc/application_blocs.dart';
 import 'package:flutter_block/pages/application/bloc/application_events.dart';
 import 'package:flutter_block/pages/application/bloc/application_sates.dart';
@@ -56,88 +55,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
                 selectedItemColor: AppColors.primaryElement,
                 unselectedItemColor: AppColors.primaryFourElementText,
                 backgroundColor: Colors.white,
-                items: [
-                  BottomNavigationBarItem(
-                    label: 'Home',
-                    icon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(Assets.iconsHome),
-                    ),
-                    activeIcon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(
-                        Assets.iconsHome,
-                        color: AppColors.primaryElement,
-                      ),
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Search',
-                    icon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(Assets.iconsSearch2),
-                    ),
-                    activeIcon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(
-                        Assets.iconsSearch2,
-                        color: AppColors.primaryElement,
-                      ),
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Courses',
-                    icon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(Assets.iconsPlayCircle1),
-                    ),
-                    activeIcon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(
-                        Assets.iconsPlayCircle1,
-                        color: AppColors.primaryElement,
-                      ),
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Chat',
-                    icon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(Assets.iconsMessageCircle),
-                    ),
-                    activeIcon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(
-                        Assets.iconsMessageCircle,
-                        color: AppColors.primaryElement,
-                      ),
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: 'Account',
-                    icon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(Assets.iconsPerson2),
-                    ),
-                    activeIcon: SizedBox(
-                      height: 15.h,
-                      width: 15.w,
-                      child: Image.asset(
-                        Assets.iconsPerson2,
-                        color: AppColors.primaryElement,
-                      ),
-                    ),
-                  ),
-                ],
+                items: bottomNavItems,
               ),
             ),
           ),
