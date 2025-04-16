@@ -5,12 +5,10 @@ import 'package:flutter_block/app_block.dart';
 import 'package:flutter_block/app_event.dart';
 import 'package:flutter_block/app_state.dart';
 import 'package:flutter_block/common/values/colors.dart';
-import 'package:flutter_block/pages/application/application_page.dart';
 import 'package:flutter_block/pages/bloc_provider.dart';
-import 'package:flutter_block/pages/register/register.dart';
-import 'package:flutter_block/pages/sign_in/sign_in.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'common/routes/routes.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -42,12 +40,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           title: 'Flutter Demo',
-          routes: {
-            // 'myHomePage': (context) => const MyHomePage(),
-            'signIn': (context) => const SignIn(),
-            'register': (context) => const Register(),
-          },
-          home: const ApplicationPage(),
+          onGenerateRoute: AppRoutes.generateRouteSettings,
         ),
       ),
     );

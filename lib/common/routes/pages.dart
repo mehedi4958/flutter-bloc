@@ -53,10 +53,12 @@ class AppRoutes {
         (element) => element.route == routeSettings.name,
       );
       if (result.isNotEmpty) {
+        debugPrint('VALID ROUTE NAME: ${routeSettings.name}');
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: routeSettings);
       }
     }
+    debugPrint('INVALID ROUTE NAME: ${routeSettings.name}');
     return MaterialPageRoute(
         builder: (_) => const SignIn(), settings: routeSettings);
   }
